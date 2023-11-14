@@ -20,7 +20,7 @@ typedef struct level_list{
 
 t_cell* createCell(int, int);
 level_list createEmptyList();
-level_list InsertCell(int level, t_cell*p, level_list * l);
+level_list InsertCell(t_cell*p, level_list * l);
 void print_LevelCell(level_list*l, int level);
 void print_AllLevelList(level_list*l);
 
