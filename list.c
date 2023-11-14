@@ -42,21 +42,22 @@ void print_LevelList(level_list*l, t_cell*p){
     }
     else{
         while (cur->heads[p->levels]!=0){
-            printf("%d", l->heads[p->levels]);
+            printf("%d", l->heads[p->levels]->value);
             cur->heads[p->levels]=cur->heads[p->levels-1];
         }
     }
 }
 
-void print_AllLevelList(level_list*l){
+void print_AllLevelList(level_list*l, t_cell*p){
     level_list*cur=l;
-    if (l->max_level=0) {
+    t_cell*cur2=p;
+    if (l->max_level=0){
         printf("la liste est vide");
     }
     for(int i=0;i<l->max_level;i++){
-        while(l->heads[i]!=NULL){
-            printf("%d", l->heads[i]);
-            cur->heads[i]=cur->heads[i+1];
+        while(p->levels>0){
+            printf("%d", cur2->next[p->levels]->value);
+            cur2->next[p->levels]=cur2->next[p->levels-1];
         }
     }
 }
