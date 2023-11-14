@@ -29,34 +29,34 @@ level_list CreateEmptyList(int max_levels){
 
 }
 
-level_list InsertCell( int level, t_cell*p, level_list * l ){
-    while(level>0) {
-        l->heads[level] = p->next[level];
-        return InsertCell(level, p, l->heads[level-1]);
+level_list InsertCell(t_cell*p, level_list* l){
+    while(p->levels>=0) {
+        l->heads[p->levels] = p->next[p->levels];
+        return InsertCell(p->next[p->levels-1], l);
     }
 
-}
-
-void print_LevelList(level_list*l, int level, t_cell*p){
-    if ((level>l->max_level)|| (level<0)){
+void print_LevelList(level_list*l, t_cell*p){
+    level_list*cur=l;
+    if ((p->levels>l->max_level)|| (p->levels<0)){
         printf("le niveau n'existe pas");
     }
     else{
-        while (l->heads[level]!=0){
-            printf("%d", l->heads[level]);
-            l->heads[level]=l->heads[level]->next;
+        while (cur->heads[p->levels]!=0){
+            printf("%d", l->heads[p->levels]);
+            cur->heads[p->levels]=cur->heads[p->levels-1];
         }
     }
 }
 
 void print_AllLevelList(level_list*l){
+    level_list*cur=l;
     if (l->max_level=0) {
         printf("la liste est vide");
     }
     for(int i=0;i<l->max_level;i++){
         while(l->heads[i]!=NULL){
             printf("%d", l->heads[i]);
-            l->heads[i]=l->heads[i]->next;
+            cur->heads[i]=cur->heads[i+1];
         }
     }
 }
