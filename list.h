@@ -9,7 +9,7 @@
 typedef struct s_cell{
     int value;
     int levels;
-    struct s_cell** next;
+    struct s_cell**next;
 }t_cell;
 
 
@@ -18,11 +18,13 @@ typedef struct level_list{
     t_cell** heads;
 }level_list;
 
-t_cell* createCell(int, int);
-level_list createEmptyList();
-level_list InsertCell(t_cell*p, level_list * l);
-void print_LevelCell(level_list*l, int level);
+t_cell* createCell(int value, int level);
+level_list* createEmptyList(int max_level);
+void InsertCell(level_list * l, t_cell*p);
+void print_LevelList(level_list*l, int level);
 void print_AllLevelList(level_list*l);
+void afficher_mylistAlignee(level_list*l);
+void insererTriee(level_list * l, t_cell * p);
 
 #endif //PORJET_C__LIST_H
 
