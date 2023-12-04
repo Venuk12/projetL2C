@@ -107,10 +107,10 @@ void insererTriee(level_list * l, t_cell * p) {
 void createcomplex_list(int n, level_list*l) {
     while (n <= 0) {
         printf("veuillez saisir un nombre n :");
-        scanf("%d\n", &n);
+        scanf("%d", &n);
     }
     l->max_level = n;
-    int nb_cell = pow(2, n) - 1;
+    int nb_cell = (int)pow(2, n) - 1;
     int cpt = 1;
     for(int i = 0; i < n; i++){ // on commence par la première ligne
         if ((i == 0) || (i == 1)){
@@ -122,7 +122,7 @@ void createcomplex_list(int n, level_list*l) {
         else{
             while (cpt <= nb_cell){
                 insererTriee(l, createCell(cpt, i));
-                cpt = pow(i, 2);
+                cpt = (int)pow(i, 2);
             }
         }
         
@@ -130,4 +130,20 @@ void createcomplex_list(int n, level_list*l) {
     print_AllLevelList(l);
 }
 
+int search_value(int x, level_list l){
+    int niveau=l.max_level; // valeur qui va prendre le nombres de niveaux de la liste.
+    level_list cur= l; //initialisation d'un curseur pour se déplacer dans la liste.
+    while(niveau>=0){
+        while(cur.heads[niveau]!=NULL || cur.heads[niveau]->value!=x){ // tant que le curseur n'a pas trouver la valeur et qu'il n'est pas à null
+            cur.heads[niveau] =cur.heads[niveau]->next[niveau]; // déplacement du curseur dans la liste.
+        }
 
+        if (cur.heads[niveau]->value==x){
+            return niveau; // la fonction retourne la valeur du niveau où a été trouvée la valeur.
+        }
+        else{
+            niveau-=1;
+        }
+    }
+    return 0;
+}
