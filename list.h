@@ -25,6 +25,7 @@ void print_LevelList(level_list*l, int level);
 void print_AllLevelList(level_list*l);
 void afficher_mylistAlignee(level_list*l);
 void insererTriee(level_list * l, t_cell * p);
+int search_value(int x, level_list l);
 
 #endif //PORJET_C__LIST_H
 
