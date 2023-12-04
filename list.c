@@ -79,25 +79,24 @@ void afficher_mylistAlignee(level_list*l){
 // Fonction pour insérer une cellule à niveau dans la liste triée par ordre croissant
 void insererTriee(level_list * l, t_cell * p) {
     int niveau = p->levels;
-
-    if (niveau >= 0 && niveau < l->max_level) {
-        t_cell * prev = NULL;
-        t_cell * cur = l->heads[niveau];
-
-        // Trouver ou placer notre cellule
-        while (cur != NULL && cur->value < p->value) {
-            prev = cur;
-            cur = cur->next[niveau];
-        }
-
-        // Insertion la cellule au bon endroit
-        if (prev == NULL) {
-            // Insertion en tête de liste
-            p->next[niveau] = l->heads[niveau];
-            l->heads[niveau] = p;
-        } else {
-            p->next[niveau] = cur;
-            prev->next[niveau] = p;
+    if (niveau >= 0 && niveau < l->max_level) { // si le niveau de la cellule correspond au niveaux max de la liste
+        for(int i=0; i<=niveau;i++){ //on commence au niveau zéro
+            t_cell * prev = NULL;
+            t_cell * cur = l->heads[i];
+            // Trouver ou placer notre cellule
+            while (cur != NULL && cur->value < p->value) {
+                prev = cur;
+                cur = cur->next[i];
+            }
+            // Insertion la cellule au bon endroit
+            if (prev == NULL) {
+                // Insertion en tête de liste
+                p->next[i] = l->heads[i];
+                l->heads[i] = p;
+            } else {
+                p->next[i] = cur; //insertion au milieu de la liste si elle n'est pas vide.
+                prev->next[i] = p;
+            }
         }
     } else {
         printf("Niveau invalide.\n");
