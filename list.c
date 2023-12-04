@@ -127,6 +127,7 @@ void createcomplex_list(int n, level_list*l) {
         }
         
     }
+    print_AllLevelList(l);
 }
 
 
