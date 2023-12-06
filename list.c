@@ -144,3 +144,23 @@ int search_value(int x, level_list l){
     }
     return 0;
 }
+
+int search_valuefirstlevel(level_list*l){
+    int x =-1;
+    printf("saisir un entier: ");
+    scanf("%d", &x);
+    if (x<0){
+        return 0;
+    }
+    level_list*cur=l;
+    while (cur->heads[0]!=NULL || cur->heads[0]->value!=x){ // on regarde seulement le niveau 0 donc pas besoin d'incrémenter ou de soustraire une variable temporaire.
+        cur->heads[0] =cur->heads[0]->next[0];
+    }
+    if (cur->heads[0]->value==x){
+        return 1; // si la valeur se trouve dans la liste
+    }
+    else{
+        return 0; // si elle n'y est pas
+    }
+
+}
