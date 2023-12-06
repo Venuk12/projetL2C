@@ -104,7 +104,7 @@ void insererTriee(level_list * l, t_cell * p) {
 }
 
 
-void createcomplex_list(int n, level_list*l) {
+level_list* createcomplex_list(int n, level_list*l) {
     while (n <= 0) {
         printf("veuillez saisir un nombre n :");
         scanf("%d", &n);
@@ -127,7 +127,6 @@ void createcomplex_list(int n, level_list*l) {
         }
         
     }
-    print_AllLevelList(l);
 }
 
 int search_value(int x, level_list l){
