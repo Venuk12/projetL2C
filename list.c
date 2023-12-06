@@ -111,8 +111,9 @@ level_list* createcomplex_list(int n, level_list*l) {
     }
     l->max_level = n;
     int nb_cell = (int)pow(2, n) - 1;
-    int cpt = 1;
+    int cpt;
     for(int i = 0; i < n; i++){ // on commence par la première ligne
+        cpt=1;
         if ((i == 0) || (i == 1)){
             while (cpt <= nb_cell) { // on défini le nombre de cellules par niveau
                 insererTriee(l, createCell(cpt, i));
