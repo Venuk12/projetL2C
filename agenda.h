@@ -49,7 +49,7 @@ typedef struct headAgenda {
 char *scanString(void);
 RendezVous *createRendezVous(void);
 Contact *createContact(void);
-
+void insertContact(headAgenda **agenda, Contact *c);
 
 
 
