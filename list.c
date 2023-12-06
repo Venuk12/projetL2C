@@ -106,10 +106,6 @@ void insererTriee(level_list * l, t_cell * p) {
 
 level_list* createcomplex_list(int n) {
     level_list*l=createEmptyList(int n);
-    while (n <= 0) {
-        printf("veuillez saisir un nombre n :");
-        scanf("%d", &n);
-    }
     int nb_cell = (int)pow(2, n) - 1;
     int cpt;
     for(int i = 0; i < n; i++){ // on commence par la première ligne
