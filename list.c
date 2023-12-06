@@ -128,6 +128,7 @@ level_list* createcomplex_list(int n, level_list*l) {
         }
         
     }
+    return l;
 }
 
 int search_value(int x, level_list l){
