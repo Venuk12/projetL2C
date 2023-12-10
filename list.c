@@ -104,25 +104,25 @@ void insererTriee(level_list * l, t_cell * p) {
 }
 
 
-level_list* createcomplex_list(int n) {
-    level_list*l=createEmptyList(int n);
-    int nb_cell = (int)pow(2, n) - 1;
-    int cpt;
-    for(int i = 0; i < n; i++){ // on commence par la première ligne
-        cpt=1;
-        if ((i == 0) || (i == 1)){
+level_list*createcomplex_list(int n) {
+    level_list*l= createEmptyList(n);
+    int nb_cell = (int)pow(2, n) - 1; // on utilise un variable qui va stocker le nombre de cellules a effectuer dans la liste du premier niveau
+    int cpt = 0;
+    for(int i = 0; i < n; i++){// on commence par la première ligne
+        if(i==0){
             while (cpt <= nb_cell) { // on défini le nombre de cellules par niveau
-                insererTriee(l, createCell(cpt, i));
-                cpt += i + 1;
-            }
-        } 
-        else{
-            while (cpt <= nb_cell){
-                insererTriee(l, createCell(cpt, i));
-                cpt = (int)pow(i, 2);
+                cpt = i + 1;
+                insererTriee(l, createCell(cpt, i)); // cpt correspond a la valeur de la cellule et i son niveau en revanche ici les valeurs des celulles ne seront pas initialisée à 0
+
             }
         }
-        
+        else{
+            cpt=pow(2,i);
+            while (cpt <= nb_cell) { // on défini le nombre de cellules par niveau
+                insererTriee(l, createCell(cpt, i)); // cpt correspond a la valeur de la cellule et i son niveau en revanche ici les valeurs des celulles ne seront pas initialisée à 0
+                cpt+=cpt; // a la fin il y aura une seule valeur dans la liste.
+            }
+        }
     }
     return l;
 }
