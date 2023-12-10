@@ -80,7 +80,7 @@ void afficher_mylistAlignee(level_list*l){
 void insererTriee(level_list * l, t_cell * p) {
     int niveau = p->levels;
     if (niveau >= 0 && niveau < l->max_level) { // si le niveau de la cellule correspond au niveaux max de la liste
-        for(int i=0; i<=niveau;i++){ //on commence au niveau zéro
+        for(int i=0; i<niveau;i++){ //on commence au niveau zéro
             t_cell * prev = NULL;
             t_cell * cur = l->heads[i];
             // Trouver ou placer notre cellule
